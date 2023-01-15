@@ -1,0 +1,46 @@
+<br> 
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Personal id</mat-label>
+    <input matInput placeholder="" #input >
+  </mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Choose birth date</mat-label>
+    <input matInput [matDatepicker]="picker"(dateChange)="onDateChange($event)">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker ></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-raised-button color="white" (click)="getPerson()">Search</button>
+
+  <br> 
+  <table mat-table [dataSource]="persons" >
+    <ng-container matColumnDef="personalId">
+      <th mat-header-cell *matHeaderCellDef> Personal ID </th>
+      <td mat-cell *matCellDef="let person"> {{person.personalId}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let person"> {{person.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let person"> {{person.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef> Gender </th>
+      <td mat-cell *matCellDef="let person"> {{person.gender}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dob">
+    <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
+    <td mat-cell *matCellDef="let person"> {{person.dob}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

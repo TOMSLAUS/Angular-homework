@@ -1,0 +1,7 @@
+interface personDto {
+  personalId : String,
+  name : String,
+  lastName : String,
+  gender : String,
+  dob : String
+}
